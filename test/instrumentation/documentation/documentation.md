@@ -6,10 +6,10 @@ description: >-
   Details of the metric data that Kubernetes components export.
 ---
 
-## Metrics (v1.36)
+## Metrics (v1.25)
 
-<!-- (auto-generated 2026 Jan 09) -->
-<!-- (auto-generated v1.36) -->
+<!-- (auto-generated 2026 Jan 21) -->
+<!-- (auto-generated v1.25) -->
 This page details the metrics that different Kubernetes components export. You can query the metrics endpoint for these 
 components using an HTTP scrape, and fetch the current metrics data in Prometheus format.
 
@@ -465,6 +465,27 @@ Beta metrics observe a looser API contract than its stable counterparts. No labe
 	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">BETA</span></li>
 	<li data-type="counter"><label class="metric_detail">Type:</label> <span class="metric_type">Counter</span></li>
 	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">deprecated_version</span><span class="metric_label">stability_level</span></li></ul>
+	</div><div class="metric" data-stability="beta">
+	<div class="metric_name">rest_client_request_duration_seconds</div>
+	<div class="metric_help">Request latency in seconds. Broken down by verb, and host.</div>
+	<ul>
+	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">BETA</span></li>
+	<li data-type="histogram"><label class="metric_detail">Type:</label> <span class="metric_type">Histogram</span></li>
+	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">host</span><span class="metric_label">verb</span></li></ul>
+	</div><div class="metric" data-stability="beta">
+	<div class="metric_name">rest_client_requests_total</div>
+	<div class="metric_help">Number of HTTP requests, partitioned by status code, method, and host.</div>
+	<ul>
+	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">BETA</span></li>
+	<li data-type="counter"><label class="metric_detail">Type:</label> <span class="metric_type">Counter</span></li>
+	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">code</span><span class="metric_label">host</span><span class="metric_label">method</span></li></ul>
+	</div><div class="metric" data-stability="beta">
+	<div class="metric_name">running_managed_controllers</div>
+	<div class="metric_help">Indicates where instances of a controller are currently running</div>
+	<ul>
+	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">BETA</span></li>
+	<li data-type="gauge"><label class="metric_detail">Type:</label> <span class="metric_type">Gauge</span></li>
+	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">manager</span><span class="metric_label">name</span></li></ul>
 	</div><div class="metric" data-stability="beta">
 	<div class="metric_name">scheduler_pod_scheduling_sli_duration_seconds</div>
 	<div class="metric_help">E2e latency for a pod being scheduled, from the time the pod enters the scheduling queue and might involve multiple scheduling attempts.</div>
@@ -3301,13 +3322,6 @@ Alpha metrics do not have any API guarantees. These metrics must be used at your
 	<li data-type="histogram"><label class="metric_detail">Type:</label> <span class="metric_type">Histogram</span></li>
 	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">host</span><span class="metric_label">verb</span></li></ul>
 	</div><div class="metric" data-stability="alpha">
-	<div class="metric_name">rest_client_request_duration_seconds</div>
-	<div class="metric_help">Request latency in seconds. Broken down by verb, and host.</div>
-	<ul>
-	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">ALPHA</span></li>
-	<li data-type="histogram"><label class="metric_detail">Type:</label> <span class="metric_type">Histogram</span></li>
-	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">host</span><span class="metric_label">verb</span></li></ul>
-	</div><div class="metric" data-stability="alpha">
 	<div class="metric_name">rest_client_request_retries_total</div>
 	<div class="metric_help">Number of request retries, partitioned by status code, verb, and host.</div>
 	<ul>
@@ -3321,13 +3335,6 @@ Alpha metrics do not have any API guarantees. These metrics must be used at your
 	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">ALPHA</span></li>
 	<li data-type="histogram"><label class="metric_detail">Type:</label> <span class="metric_type">Histogram</span></li>
 	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">host</span><span class="metric_label">verb</span></li></ul>
-	</div><div class="metric" data-stability="alpha">
-	<div class="metric_name">rest_client_requests_total</div>
-	<div class="metric_help">Number of HTTP requests, partitioned by status code, method, and host.</div>
-	<ul>
-	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">ALPHA</span></li>
-	<li data-type="counter"><label class="metric_detail">Type:</label> <span class="metric_type">Counter</span></li>
-	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">code</span><span class="metric_label">host</span><span class="metric_label">method</span></li></ul>
 	</div><div class="metric" data-stability="alpha">
 	<div class="metric_name">rest_client_response_size_bytes</div>
 	<div class="metric_help">Response size in bytes. Broken down by verb and host.</div>
@@ -3377,13 +3384,6 @@ Alpha metrics do not have any API guarantees. These metrics must be used at your
 	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">ALPHA</span></li>
 	<li data-type="counter"><label class="metric_detail">Type:</label> <span class="metric_type">Counter</span></li>
 	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">code</span></li></ul>
-	</div><div class="metric" data-stability="alpha">
-	<div class="metric_name">running_managed_controllers</div>
-	<div class="metric_help">Indicates where instances of a controller are currently running</div>
-	<ul>
-	<li><label class="metric_detail">Stability Level:</label><span class="metric_stability_level">ALPHA</span></li>
-	<li data-type="gauge"><label class="metric_detail">Type:</label> <span class="metric_type">Gauge</span></li>
-	<li class="metric_labels_varying"><label class="metric_detail">Labels:</label><span class="metric_label">manager</span><span class="metric_label">name</span></li></ul>
 	</div><div class="metric" data-stability="alpha">
 	<div class="metric_name">scheduler_async_api_call_execution_duration_seconds</div>
 	<div class="metric_help">Duration in seconds for executing API call in the async dispatcher.</div>

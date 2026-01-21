@@ -596,39 +596,6 @@
   help: Number of PersistentVolumeClaim creation requests
   type: Counter
   stabilityLevel: ALPHA
-- name: kubelet_credential_provider_config_info
-  help: Information about the last applied credential provider configuration with
-    hash as label
-  type: Custom
-  stabilityLevel: ALPHA
-  labels:
-  - hash
-- name: credential_provider_plugin_duration
-  subsystem: kubelet
-  help: Duration of execution in seconds for credential provider plugin
-  type: Histogram
-  stabilityLevel: ALPHA
-  labels:
-  - plugin_name
-  buckets:
-  - 0.005
-  - 0.01
-  - 0.025
-  - 0.05
-  - 0.1
-  - 0.25
-  - 0.5
-  - 1
-  - 2.5
-  - 5
-  - 10
-- name: credential_provider_plugin_errors_total
-  subsystem: kubelet
-  help: Number of errors from credential provider plugin
-  type: Counter
-  stabilityLevel: ALPHA
-  labels:
-  - plugin_name
 - name: pv_collector_bound_pv_count
   help: Gauge measuring number of persistent volume currently bound
   type: Custom
@@ -811,6 +778,39 @@
     If serving certificate is invalid or unused, the value will be +INF.
   type: Gauge
   stabilityLevel: ALPHA
+- name: kubelet_credential_provider_config_info
+  help: Information about the last applied credential provider configuration with
+    hash as label
+  type: Custom
+  stabilityLevel: ALPHA
+  labels:
+  - hash
+- name: credential_provider_plugin_duration
+  subsystem: kubelet
+  help: Duration of execution in seconds for credential provider plugin
+  type: Histogram
+  stabilityLevel: ALPHA
+  labels:
+  - plugin_name
+  buckets:
+  - 0.005
+  - 0.01
+  - 0.025
+  - 0.05
+  - 0.1
+  - 0.25
+  - 0.5
+  - 1
+  - 2.5
+  - 5
+  - 10
+- name: credential_provider_plugin_errors_total
+  subsystem: kubelet
+  help: Number of errors from credential provider plugin
+  type: Counter
+  stabilityLevel: ALPHA
+  labels:
+  - plugin_name
 - name: server_expiration_renew_errors
   subsystem: kubelet
   help: Counter of certificate renewal errors.
@@ -5590,26 +5590,6 @@
   - 15
   - 30
   - 60
-- name: rest_client_request_duration_seconds
-  help: Request latency in seconds. Broken down by verb, and host.
-  type: Histogram
-  stabilityLevel: ALPHA
-  labels:
-  - host
-  - verb
-  buckets:
-  - 0.005
-  - 0.025
-  - 0.1
-  - 0.25
-  - 0.5
-  - 1
-  - 2
-  - 4
-  - 8
-  - 15
-  - 30
-  - 60
 - name: rest_client_request_retries_total
   help: Number of request retries, partitioned by status code, verb, and host.
   type: Counter
@@ -5637,14 +5617,6 @@
   - 1.048576e+06
   - 4.194304e+06
   - 1.6777216e+07
-- name: rest_client_requests_total
-  help: Number of HTTP requests, partitioned by status code, method, and host.
-  type: Counter
-  stabilityLevel: ALPHA
-  labels:
-  - code
-  - host
-  - method
 - name: rest_client_response_size_bytes
   help: Response size in bytes. Broken down by verb and host.
   type: Histogram
@@ -5676,13 +5648,6 @@
   stabilityLevel: ALPHA
   labels:
   - result
-- name: running_managed_controllers
-  help: Indicates where instances of a controller are currently running
-  type: Gauge
-  stabilityLevel: ALPHA
-  labels:
-  - manager
-  - name
 - name: version_info
   help: Provides the compatibility version info of the component. The component label
     is the name of the component, usually kube, but is relevant for aggregated-apiservers.
@@ -5717,6 +5682,41 @@
   labels:
   - deprecated_version
   - stability_level
+- name: rest_client_request_duration_seconds
+  help: Request latency in seconds. Broken down by verb, and host.
+  type: Histogram
+  stabilityLevel: BETA
+  labels:
+  - host
+  - verb
+  buckets:
+  - 0.005
+  - 0.025
+  - 0.1
+  - 0.25
+  - 0.5
+  - 1
+  - 2
+  - 4
+  - 8
+  - 15
+  - 30
+  - 60
+- name: rest_client_requests_total
+  help: Number of HTTP requests, partitioned by status code, method, and host.
+  type: Counter
+  stabilityLevel: BETA
+  labels:
+  - code
+  - host
+  - method
+- name: running_managed_controllers
+  help: Indicates where instances of a controller are currently running
+  type: Gauge
+  stabilityLevel: BETA
+  labels:
+  - manager
+  - name
 - name: adds_total
   subsystem: workqueue
   help: Total number of adds handled by workqueue
